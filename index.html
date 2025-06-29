@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cab Taxi Service</title>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">🚕 CabGo</div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#ride">Ride</a>
+      <a href="javascript:void(0);" class="login-btn">Login</a>
+      <a href="javascript:void(0);" class="signup-btn">Signup</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Find Your Ride Anytime</h1>
+      <p>Fast. Safe. Reliable. Book your cab in seconds.</p>
+      <a href="#" class="book-now-btn" onclick="openBooking()">Book Now</a>
+    </div>
+  </section>
+
+  
+  <section id="authSection" style="display: none;">
+    <div class="auth-container">
+  
+      <span class="close-btn" onclick="closeAuthModal()">✖</span>
+
+
+      <div id="loginForm" class="auth-form">
+        <h2>Login</h2>
+        <form>
+          <input type="email" id="loginEmail" placeholder="Enter your email" required />
+          <input type="password" id="loginPassword" placeholder="Enter your password" required />
+          <button type="submit" class="auth-btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleAuthForm()">Sign up</a></p>
+      </div>
+
+      <div id="signupForm" class="auth-form" style="display: none;">
+        <h2>Sign Up</h2>
+        <form>
+          <input type="text" id="signupName" placeholder="Enter your name" required />
+          <input type="email" id="signupEmail" placeholder="Enter your email" required />
+          <input type="password" id="signupPassword" placeholder="Enter your password" required />
+          <button type="submit" class="auth-btn">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="javascript:void(0);" onclick="toggleAuthForm()">Login</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ride" id="ride">
+    <div class="section-title">
+      <h2>How It Works</h2>
+      <p>Get your ride in just a few simple steps!</p>
+    </div>
+    <div class="ride-steps">
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/3468/3468379.png" alt="Book Ride">
+        <h3>1. Book a Ride</h3>
+        <p>Enter your location and destination, then book instantly from the app or website.</p>
+        <p class="fare"><strong>Fare Estimate:</strong> $10</p>
+      </div>
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/2920/2920101.png" alt="Driver Arrives">
+        <h3>2. Driver Arrives</h3>
+        <p>Our professional driver picks you up at your doorstep, right on time.</p>
+        <p class="fare"><strong>Fare Estimate:</strong> $5</p>
+      </div>
+      <div class="step">
+        <img src="https://cdn-icons-png.flaticon.com/512/1536/1536544.png" alt="Reach Safely">
+        <h3>3. Reach Your Destination</h3>
+        <p>Enjoy a safe, comfortable journey and reach your destination quickly.</p>
+        <p class="fare"><strong>Fare Estimate:</strong> $3</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="booking-form" id="bookingForm" style="display: ">
+    <div class="form-container">
+      <h2>Book Your Ride</h2>
+      <form onsubmit="submitBooking(event)">
+        <input type="text" id="pickupInput" placeholder="Pickup Location" required />
+        <input type="text" id="dropInput" placeholder="Drop-off Location" required />
+        <select id="cabSelect" required>
+          <option value="">Select Car</option>
+          <option value="Elantra">Elantra</option>
+          <option value="Sonata">Sonata</option>
+          <option value="Civic">Civic</option>
+          <option value="LC 300">LC 300</option>
+          <option value="Fortuner">Fortuner</option>
+        </select>
+        <button type="submit" class="submit-btn">Confirm Ride</button>
+      </form>
+      <div id="acceptedMsg" style="display: none; margin-top: 20px; text-align: center; color: green;">
+        <h3>✅ Ride Accepted!</h3>
+        <p><strong>Pickup:</strong> <span id="pickupDisplay"></span></p>
+        <p><strong>Drop-off:</strong> <span id="dropDisplay"></span></p>
+        <p><strong>Cab Type:</strong> <span id="cabDisplay"></span></p>
+        <p><strong>Fare:</strong> <span id="fareDisplay"></span></p>
+        <p>🕒 Your cab will arrive in <strong>25 minutes</strong>.</p>
+      </div>
+    </div>
+  </section>
+  <section class="review-section">
+    <h2>What Our Customers Say</h2>
+    <div class="reviews">
+      
+      <div class="review-card">
+        <div class="review-header">
+         
+          <div class="review-name">Sarah Khan</div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">The ride was smooth and the driver was extremely polite. Will book again!</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+        
+          <div class="review-name">Ahmed Raza</div>
+        </div>
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">Cab arrived on time and the fare was reasonable. Great service overall.</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+         
+          <div class="review-name">Fatima Noor</div>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Super easy to book and very clean vehicles. Highly recommended!</p>
+      </div>
+
+    </div>
+  </section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <h3>🚕</h3>
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+                                                       
+    <div class="footer-social">
+      <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Your Company. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+  <script>
+    
+    function toggleAuthForm() {
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      
+      loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+      signupForm.style.display = signupForm.style.display === 'none' ? 'block' : 'none';
+    }
+
+
+    document.querySelector('.login-btn').addEventListener('click', function() {
+      document.getElementById('authSection').style.display = 'block';
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('signupForm').style.display = 'none';
+    });
+
+    document.querySelector('.signup-btn').addEventListener('click', function() {
+      document.getElementById('authSection').style.display = 'block';
+      document.getElementById('signupForm').style.display = 'block';
+      document.getElementById('loginForm').style.display = 'none';
+    });
+
+
+    function closeAuthModal() {
+      document.getElementById('authSection').style.display = 'none';
+    }
+
+  
+    function openBooking() {
+      document.getElementById('bookingForm').style.display = 'block';
+      document.getElementById('bookingForm').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function calculateFare(distance) {
+      const ratePerMile = 1.5; // $1.5 per mile
+      return (distance * ratePerMile).toFixed(2);
+    }
+
+    function submitBooking(event) {
+      event.preventDefault();
+      const pickup = document.getElementById('pickupInput').value.trim();
+      const drop = document.getElementById('dropInput').value.trim();
+      const cabType = document.getElementById('cabSelect').value;
+
+      if (pickup === "" || drop === "" || cabType === "") {
+        alert("Please fill all booking details including cab type!");
+        return;
+      }
+
+      const distance = 5; 
+      const fare = calculateFare(distance);
+
+      document.getElementById('pickupDisplay').innerText = pickup;
+      document.getElementById('dropDisplay').innerText = drop;
+      document.getElementById('cabDisplay').innerText = cabType;
+      document.getElementById('fareDisplay').innerText = `$${fare}`;
+
+      document.getElementById('acceptedMsg').style.display = 'block';
+      document.getElementById('acceptedMsg').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
